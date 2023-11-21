@@ -15,6 +15,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
         type: 3}
+      propertyPath: m_fpsModuleState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
+        type: 3}
+      propertyPath: m_ramModuleState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
+        type: 3}
+      propertyPath: m_audioModuleState
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
+        type: 3}
+      propertyPath: m_advancedModuleState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
+        type: 3}
+      propertyPath: m_graphModuleOffset.x
+      value: 156.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
+        type: 3}
+      propertyPath: m_graphModuleOffset.y
+      value: -66.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
+        type: 3}
+      propertyPath: m_graphModulePosition
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
+        type: 3}
+      propertyPath: m_advancedModuleOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
+        type: 3}
+      propertyPath: m_advancedModuleOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
+        type: 3}
       propertyPath: m_advancedModulePosition
       value: 1
       objectReference: {fileID: 0}
