@@ -1,5 +1,7 @@
+using System;
 using SpaceAttackers.Input;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SpaceAttackers.Player
 {
@@ -7,6 +9,8 @@ namespace SpaceAttackers.Player
 	{
 		private GameInputAction _gameInputAction;
 		public float HorizontalInput { get; private set; }
+		public event Action ShootingFired;
+
 		private void Awake()
 		{
 			_gameInputAction = new GameInputAction();
@@ -16,6 +20,14 @@ namespace SpaceAttackers.Player
 		private void EnableActions()
 		{
 			_gameInputAction.Spaceship.Movement.Enable();
+			_gameInputAction.Spaceship.Shooting.Enable();
+
+			_gameInputAction.Spaceship.Shooting.performed += ShotsFired;
+		}
+
+		private void ShotsFired(InputAction.CallbackContext context)
+		{
+			ShootingFired?.Invoke();
 		}
 
 		private void Update()

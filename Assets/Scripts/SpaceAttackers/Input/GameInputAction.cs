@@ -37,6 +37,15 @@ namespace SpaceAttackers.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shooting"",
+                    ""type"": ""Button"",
+                    ""id"": ""62fda4a1-b3dd-485d-8b9b-4c1035cea4ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -72,6 +81,17 @@ namespace SpaceAttackers.Input
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f7a550c-0033-41ef-ab75-ca6a8db32e93"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -81,6 +101,7 @@ namespace SpaceAttackers.Input
             // Spaceship
             m_Spaceship = asset.FindActionMap("Spaceship", throwIfNotFound: true);
             m_Spaceship_Movement = m_Spaceship.FindAction("Movement", throwIfNotFound: true);
+            m_Spaceship_Shooting = m_Spaceship.FindAction("Shooting", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -143,11 +164,13 @@ namespace SpaceAttackers.Input
         private readonly InputActionMap m_Spaceship;
         private List<ISpaceshipActions> m_SpaceshipActionsCallbackInterfaces = new List<ISpaceshipActions>();
         private readonly InputAction m_Spaceship_Movement;
+        private readonly InputAction m_Spaceship_Shooting;
         public struct SpaceshipActions
         {
             private @GameInputAction m_Wrapper;
             public SpaceshipActions(@GameInputAction wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_Spaceship_Movement;
+            public InputAction @Shooting => m_Wrapper.m_Spaceship_Shooting;
             public InputActionMap Get() { return m_Wrapper.m_Spaceship; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -160,6 +183,9 @@ namespace SpaceAttackers.Input
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Shooting.started += instance.OnShooting;
+                @Shooting.performed += instance.OnShooting;
+                @Shooting.canceled += instance.OnShooting;
             }
 
             private void UnregisterCallbacks(ISpaceshipActions instance)
@@ -167,6 +193,9 @@ namespace SpaceAttackers.Input
                 @Movement.started -= instance.OnMovement;
                 @Movement.performed -= instance.OnMovement;
                 @Movement.canceled -= instance.OnMovement;
+                @Shooting.started -= instance.OnShooting;
+                @Shooting.performed -= instance.OnShooting;
+                @Shooting.canceled -= instance.OnShooting;
             }
 
             public void RemoveCallbacks(ISpaceshipActions instance)
@@ -187,6 +216,7 @@ namespace SpaceAttackers.Input
         public interface ISpaceshipActions
         {
             void OnMovement(InputAction.CallbackContext context);
+            void OnShooting(InputAction.CallbackContext context);
         }
     }
 }
