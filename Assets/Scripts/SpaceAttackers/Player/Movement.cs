@@ -17,7 +17,7 @@ namespace SpaceAttackers.Player
 
 		private void Update()
 		{
-			var cameraEdge = _camera.orthographicSize * _camera.aspect / 2 + 0.8f;
+			var cameraEdge = _camera.orthographicSize * _camera.aspect / 2 + 3f;
 
 			if (transform.position.x < -cameraEdge)
 			{
