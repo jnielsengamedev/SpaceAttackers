@@ -13,6 +13,16 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1707732872792561063, guid: 018247255856540428a6c9bc11629902,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707732872792561063, guid: 018247255856540428a6c9bc11629902,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
         type: 3}
       propertyPath: m_fpsModuleState
@@ -31,7 +41,7 @@ PrefabInstance:
     - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
         type: 3}
       propertyPath: m_advancedModuleState
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
         type: 3}
@@ -61,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 1707732872792584817, guid: 018247255856540428a6c9bc11629902,
         type: 3}
       propertyPath: m_advancedModulePosition
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1707732872802266355, guid: 018247255856540428a6c9bc11629902,
         type: 3}

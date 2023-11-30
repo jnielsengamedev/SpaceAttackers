@@ -1,3 +1,4 @@
+using SpaceAttackers.GameManager;
 using UnityEngine;
 
 namespace SpaceAttackers.Laser
@@ -6,10 +7,12 @@ namespace SpaceAttackers.Laser
 	{
 		[SerializeField] private float moveSpeed;
 		private Camera _camera;
+		private Score.AddScore _addScore;
 
 		private void Awake()
 		{
 			_camera = Camera.main;
+			_addScore = Score.Singleton.AskForAddScore(gameObject);
 		}
 
 		private void Update()
@@ -27,7 +30,11 @@ namespace SpaceAttackers.Laser
 		private void OnTriggerEnter(Collider other)
 		{
 			if (!other.CompareTag("Enemy")) return;
-			Destroy(other.gameObject);
+
+			var scoreAmountExists = other.TryGetComponent<Aliens.ScoreAmount>(out var amount);
+			_addScore(scoreAmountExists ? amount.scoreAmount : 20);
+
+			other.gameObject.SetActive(false);
 			Destroy(gameObject);
 		}
 	}
