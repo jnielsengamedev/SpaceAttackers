@@ -7,7 +7,6 @@ namespace SpaceAttackers.Laser
 		[SerializeField] private float moveSpeed;
 		private Camera _camera;
 
-
 		private void Awake()
 		{
 			_camera = Camera.main;
@@ -15,9 +14,9 @@ namespace SpaceAttackers.Laser
 
 		private void Update()
 		{
-			var viewportPoint = _camera.ViewportToWorldPoint(new Vector3(0, 0, _camera.nearClipPlane));
+			var cameraEdge = _camera.orthographicSize * 2 + 1;
 
-			if (transform.position.y > Mathf.Abs(viewportPoint.z))
+			if (transform.position.y > Mathf.Abs(cameraEdge))
 			{
 				Destroy(gameObject);
 			}
