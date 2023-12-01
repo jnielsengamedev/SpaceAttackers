@@ -1,3 +1,4 @@
+using SpaceAttackers.Aliens;
 using SpaceAttackers.GameManager;
 using UnityEngine;
 
@@ -34,7 +35,7 @@ namespace SpaceAttackers.Laser
 			var scoreAmountExists = other.TryGetComponent<Aliens.ScoreAmount>(out var amount);
 			_addScore(scoreAmountExists ? amount.scoreAmount : 20);
 
-			other.gameObject.SetActive(false);
+			other.gameObject.GetComponent<AlienMessenger>().Deactivate();
 			Destroy(gameObject);
 		}
 	}

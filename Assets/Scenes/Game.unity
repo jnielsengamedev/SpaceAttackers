@@ -1138,6 +1138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 454678611}
+  - component: {fileID: 454678612}
   m_Layer: 0
   m_Name: AlienVerticalRow (8)
   m_TagString: Untagged
@@ -1165,6 +1166,18 @@ Transform:
   - {fileID: 206550078}
   m_Father: {fileID: 543074722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &454678612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454678610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724d1c18d72cd1346b4dfcd90968b9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &461304732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1248,6 +1261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543074722}
+  - component: {fileID: 543074723}
   m_Layer: 0
   m_Name: AlienGroup
   m_TagString: Untagged
@@ -1279,6 +1293,18 @@ Transform:
   - {fileID: 792688461}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &543074723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543074721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a19765c22dcf784b86d2735bc56d450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &551376664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1436,6 +1462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 581901764}
+  - component: {fileID: 581901765}
   m_Layer: 0
   m_Name: AlienVerticalRow
   m_TagString: Untagged
@@ -1463,6 +1490,18 @@ Transform:
   - {fileID: 784573334}
   m_Father: {fileID: 543074722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &581901765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581901763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724d1c18d72cd1346b4dfcd90968b9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &598705891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,6 +2137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 792688461}
+  - component: {fileID: 792688462}
   m_Layer: 0
   m_Name: AlienVerticalRow (4)
   m_TagString: Untagged
@@ -2125,6 +2165,18 @@ Transform:
   - {fileID: 413236585}
   m_Father: {fileID: 543074722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &792688462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792688460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724d1c18d72cd1346b4dfcd90968b9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &818132982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2989,6 +3041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1330136033}
+  - component: {fileID: 1330136034}
   m_Layer: 0
   m_Name: AlienVerticalRow (1)
   m_TagString: Untagged
@@ -3016,6 +3069,18 @@ Transform:
   - {fileID: 2134437491}
   m_Father: {fileID: 543074722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1330136034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330136032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724d1c18d72cd1346b4dfcd90968b9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1342290431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3741,6 +3806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1605650698}
+  - component: {fileID: 1605650699}
   m_Layer: 0
   m_Name: AlienVerticalRow (3)
   m_TagString: Untagged
@@ -3768,6 +3834,18 @@ Transform:
   - {fileID: 1416399903}
   m_Father: {fileID: 543074722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1605650699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605650697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724d1c18d72cd1346b4dfcd90968b9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1674817429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3969,6 +4047,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1712862778}
+  - component: {fileID: 1712862779}
   m_Layer: 0
   m_Name: AlienVerticalRow (7)
   m_TagString: Untagged
@@ -3996,6 +4075,18 @@ Transform:
   - {fileID: 551376665}
   m_Father: {fileID: 543074722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1712862779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712862777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724d1c18d72cd1346b4dfcd90968b9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1729897187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4301,6 +4392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1998688318}
+  - component: {fileID: 1998688319}
   m_Layer: 0
   m_Name: AlienVerticalRow (5)
   m_TagString: Untagged
@@ -4328,6 +4420,18 @@ Transform:
   - {fileID: 1158838145}
   m_Father: {fileID: 543074722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1998688319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998688317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724d1c18d72cd1346b4dfcd90968b9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2054921169
 GameObject:
   m_ObjectHideFlags: 0
@@ -4337,6 +4441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2054921170}
+  - component: {fileID: 2054921171}
   m_Layer: 0
   m_Name: AlienVerticalRow (6)
   m_TagString: Untagged
@@ -4364,6 +4469,18 @@ Transform:
   - {fileID: 1386504129}
   m_Father: {fileID: 543074722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2054921171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054921169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724d1c18d72cd1346b4dfcd90968b9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2068641397
 GameObject:
   m_ObjectHideFlags: 0
@@ -4373,6 +4490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2068641398}
+  - component: {fileID: 2068641399}
   m_Layer: 0
   m_Name: AlienVerticalRow (2)
   m_TagString: Untagged
@@ -4400,6 +4518,18 @@ Transform:
   - {fileID: 818132983}
   m_Father: {fileID: 543074722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2068641399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068641397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724d1c18d72cd1346b4dfcd90968b9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2076915232
 PrefabInstance:
   m_ObjectHideFlags: 0
