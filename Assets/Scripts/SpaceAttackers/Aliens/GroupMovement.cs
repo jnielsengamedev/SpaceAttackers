@@ -89,7 +89,7 @@ namespace SpaceAttackers.Aliens
 				var lerped = Vector3.Lerp(transform.position, lerpPosition, lerpTime);
 				transform.position = lerped;
 				lerpTime += Time.fixedDeltaTime * 1.5f;
-				yield return new WaitForEndOfFrame();
+				yield return new WaitForFixedUpdate();
 			}
 		}
 
