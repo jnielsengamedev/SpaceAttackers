@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace SpaceAttackers.Aliens
+namespace SpaceAttackers.Aliens.AlienGroup
 {
 	public class GroupMovement : MonoBehaviour
 	{

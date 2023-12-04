@@ -7,7 +7,7 @@ namespace SpaceAttackers.Player
 	{
 		private Input _input;
 
-		[SerializeField] private GameObject laser;
+		[SerializeField] private GameObject laserPrefab;
 		[SerializeField] private Transform shootingPosition;
 
 		private void Awake()
@@ -18,7 +18,7 @@ namespace SpaceAttackers.Player
 
 		private void ShootLaser()
 		{
-			Instantiate(laser, shootingPosition.position, laser.transform.rotation);
+			Instantiate(laserPrefab, shootingPosition.position, laserPrefab.transform.rotation);
 		}
 	}
 }

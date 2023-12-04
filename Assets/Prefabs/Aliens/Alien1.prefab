@@ -85,6 +85,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 12d0f38cb2819134580cd005ed057632,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12d0f38cb2819134580cd005ed057632,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -109,6 +114,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -681143500039246951}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 12d0f38cb2819134580cd005ed057632,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6576866864801250410}
   m_SourcePrefab: {fileID: 100100000, guid: 12d0f38cb2819134580cd005ed057632, type: 3}
 --- !u!1 &3131162447893995826 stripped
 GameObject:
@@ -163,3 +172,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5fb63f1d31e2c48b387c94ffc707b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6576866864801250410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3131162447893995826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba0a1b89b034694abd0b6dd6b46253d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserPrefab: {fileID: 4876427596191476378, guid: 23eb557e1bf51ca45a74bc9668b4cb01,
+    type: 3}
