@@ -1961,6 +1961,8 @@ GameObject:
   - component: {fileID: 782232808}
   - component: {fileID: 782232809}
   - component: {fileID: 782232810}
+  - component: {fileID: 782232811}
+  - component: {fileID: 782232812}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2010,6 +2012,31 @@ MonoBehaviour:
   laserPrefab: {fileID: 4876427596191476378, guid: 23eb557e1bf51ca45a74bc9668b4cb01,
     type: 3}
   alienShooting: {fileID: 543074724}
+--- !u!114 &782232811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782232807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6b5fdcb0ca07840ae57adb0b500b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 5
+--- !u!114 &782232812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782232807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac0c6b6f06f4c2f96d0a73abea0cec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &784573333
 PrefabInstance:
   m_ObjectHideFlags: 0

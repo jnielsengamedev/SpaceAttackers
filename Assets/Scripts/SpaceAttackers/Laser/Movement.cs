@@ -24,7 +24,7 @@ namespace SpaceAttackers.Laser
 				Destroy(gameObject);
 			}
 
-
+			if (PauseManager.Singleton.IsPaused) return;
 			transform.Translate(Vector3.up * (moveSpeed * Time.deltaTime));
 		}
 
@@ -50,9 +50,10 @@ namespace SpaceAttackers.Laser
 			Destroy(gameObject);
 		}
 
-		private void PlayerCollision(Collider other)
+		private void PlayerCollision(Component other)
 		{
-			print("ouchie, player has been hit");
+			var livesManager = other.GetComponent<Player.Lives>();
+			livesManager.PlayerShot();
 			Destroy(gameObject);
 		}
 

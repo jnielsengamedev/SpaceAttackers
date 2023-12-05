@@ -1,3 +1,4 @@
+using SpaceAttackers.GameManager;
 using UnityEngine;
 
 namespace SpaceAttackers.Player
@@ -17,6 +18,8 @@ namespace SpaceAttackers.Player
 
 		private void Update()
 		{
+			if (PauseManager.Singleton.IsPaused) return;
+
 			var cameraEdge = _camera.orthographicSize * _camera.aspect / 2 + 3f;
 
 			if (transform.position.x < -cameraEdge)

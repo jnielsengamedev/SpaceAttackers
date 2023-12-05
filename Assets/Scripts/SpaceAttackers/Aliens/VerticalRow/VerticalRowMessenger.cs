@@ -25,6 +25,7 @@ namespace SpaceAttackers.Aliens.VerticalRow
 				_shooting.LaserDestroyed();
 				gameObject.SetActive(false);
 			}
+
 			var randomAlien = activeAliens[Random.Range(0, activeAliens.Length)];
 			randomAlien.ShootLaser();
 		}

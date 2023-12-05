@@ -1,4 +1,5 @@
 using System.Collections;
+using SpaceAttackers.GameManager;
 using UnityEngine;
 
 namespace SpaceAttackers.Aliens.AlienGroup
@@ -29,6 +30,11 @@ namespace SpaceAttackers.Aliens.AlienGroup
 		{
 			while (_groupMoving)
 			{
+				while (PauseManager.Singleton.IsPaused)
+				{
+					yield return new WaitForEndOfFrame();
+				}
+
 				yield return StartCoroutine(LerpMovement(new Vector3(_currentDirection, 0, 0)));
 
 				switch (_currentDirection)
