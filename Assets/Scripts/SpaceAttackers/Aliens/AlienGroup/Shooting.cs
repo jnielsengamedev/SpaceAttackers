@@ -19,7 +19,8 @@ namespace SpaceAttackers.Aliens.AlienGroup
 
 		private VerticalRowMessenger GetRandomVerticalRow()
 		{
-			return _verticalRows[Random.Range(0, _verticalRows.Length)];
+			var activeRows = _verticalRows.Where(child => child.gameObject.activeInHierarchy).ToArray();
+			return activeRows[Random.Range(0, activeRows.Length)];
 		}
 
 		private void Start()

@@ -20,6 +20,11 @@ namespace SpaceAttackers.Aliens.VerticalRow
 		public void Shoot()
 		{
 			var activeAliens = _aliens.Where(child => child.gameObject.activeInHierarchy).ToArray();
+			if (activeAliens.Length == 0)
+			{
+				_shooting.LaserDestroyed();
+				gameObject.SetActive(false);
+			}
 			var randomAlien = activeAliens[Random.Range(0, activeAliens.Length)];
 			randomAlien.ShootLaser();
 		}
@@ -30,17 +35,13 @@ namespace SpaceAttackers.Aliens.VerticalRow
 			if (activeChildren == 0)
 			{
 				_groupMovement.CalculateCurrentBounds();
+				gameObject.SetActive(false);
 			}
 		}
 
 		private int GetActiveChildrenCount()
 		{
 			return _aliens.Count(child => child.gameObject.activeInHierarchy);
-		}
-
-		public void LaserDestroyed()
-		{
-			_shooting.LaserDestroyed();
 		}
 	}
 }
