@@ -20,6 +20,11 @@ namespace SpaceAttackers.Aliens.AlienGroup
 		private VerticalRowMessenger GetRandomVerticalRow()
 		{
 			var activeRows = _verticalRows.Where(child => child.gameObject.activeInHierarchy).ToArray();
+			if (activeRows.Length == 0)
+			{
+				LaserDestroyed();
+			}
+
 			return activeRows[Random.Range(0, activeRows.Length)];
 		}
 
