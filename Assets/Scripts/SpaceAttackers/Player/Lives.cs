@@ -27,7 +27,7 @@ namespace SpaceAttackers.Player
 		private IEnumerator ExplosionCoroutine()
 		{
 			explosion.Play();
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(0.03f);
 			_renderer.enabled = false;
 			while (explosion.isPlaying)
 			{
