@@ -1,0 +1,23 @@
+.menu-header {
+    font-size: 64px;
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.menu-button {
+    background-color: white;
+    font-size: 32px;
+    border-radius: 5px;
+    border-width: 8px;
+    border-color: slategray;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+    -unity-font-style: bold;
+}
+
+.menu-button:focus {
+    border-color: deepskyblue;
+}

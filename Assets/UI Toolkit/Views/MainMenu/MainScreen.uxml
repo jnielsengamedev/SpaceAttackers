@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Menu.uss?fileID=7433441132597879392&amp;guid=b9a2455721323c723a62927a9e8d80c6&amp;type=3#Menu" />
+    <ui:Label tabindex="-1" text="Space Attackers" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu-header" style="color: rgb(255, 255, 255);" />
+    <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Start" class="menu-button" />
+    <ui:Button text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Settings" class="menu-button" />
+    <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Quit" class="menu-button" />
+</ui:UXML>

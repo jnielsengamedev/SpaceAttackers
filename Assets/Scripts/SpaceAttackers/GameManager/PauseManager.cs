@@ -6,10 +6,17 @@ namespace SpaceAttackers.GameManager
 	{
 		public bool IsPaused { get; private set; }
 		public static PauseManager Singleton;
+		[SerializeField] private LoadingScreen loadingScreen;
 
 		private void Awake()
 		{
 			Singleton = this;
+			IsPaused = true;
+		}
+
+		private void Start()
+		{
+			loadingScreen.HideLoadingScreen();
 		}
 
 		public void PauseGame()
