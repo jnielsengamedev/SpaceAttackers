@@ -11,9 +11,10 @@ namespace SpaceAttackers.Aliens.AlienGroup
 		private float _currentDirection = RightDirection;
 		private const float RightDirection = 0.5f;
 		private const float LeftDirection = -RightDirection;
-		private bool _groupMoving = true;
+		private bool _groupMoving;
 		private Camera _camera;
 		private float CameraSize => _camera.orthographicSize * _camera.aspect;
+		private bool _coroutineStopped;
 
 		private void Awake()
 		{
@@ -28,11 +29,23 @@ namespace SpaceAttackers.Aliens.AlienGroup
 
 		private IEnumerator MovementCoroutine()
 		{
+			_groupMoving = true;
+			_coroutineStopped = false;
+			CalculateCurrentBounds();
 			while (_groupMoving)
 			{
 				while (PauseManager.Singleton.IsPaused)
 				{
 					yield return new WaitForEndOfFrame();
+					if (_groupMoving == false)
+					{
+						break;
+					}
+				}
+
+				if (_groupMoving == false)
+				{
+					continue;
 				}
 
 				yield return StartCoroutine(LerpMovement(new Vector3(_currentDirection, 0, 0)));
@@ -64,6 +77,8 @@ namespace SpaceAttackers.Aliens.AlienGroup
 
 				yield return new WaitForSeconds(0.5f);
 			}
+
+			_coroutineStopped = true;
 		}
 
 		private IEnumerator LerpMoveDown()
@@ -124,5 +139,22 @@ namespace SpaceAttackers.Aliens.AlienGroup
 
 			return bounds;
 		}
+
+		public IEnumerator StopMovement()
+		{
+			PauseManager.Singleton.PauseGame();
+			_groupMoving = false;
+			while (!_coroutineStopped)
+			{
+				yield return new WaitForEndOfFrame();
+			}
+		}
+
+		public void StartMovement()
+		{
+			_currentDirection = RightDirection;
+			StartCoroutine(MovementCoroutine());
+		}
+		
 	}
 }

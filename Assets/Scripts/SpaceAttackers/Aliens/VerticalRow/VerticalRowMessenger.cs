@@ -17,6 +17,14 @@ namespace SpaceAttackers.Aliens.VerticalRow
 			_aliens = transform.Cast<Transform>().Select(child => child.GetComponent<Alien.AlienMessenger>()).ToArray();
 		}
 
+		private void OnEnable()
+		{
+			foreach (var alienMessenger in _aliens)
+			{
+				alienMessenger.gameObject.SetActive(true);
+			}
+		}
+
 		public void Shoot()
 		{
 			var activeAliens = _aliens.Where(child => child.gameObject.activeInHierarchy).ToArray();
