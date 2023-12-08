@@ -189,9 +189,18 @@ namespace SpaceAttackers.Input
             ""actions"": [
                 {
                     ""name"": ""MoveFocus"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""9be6d924-a9ba-48fe-bb2b-c9ad00f221f2"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""8baca4f0-ac81-4687-8efe-e3c8fa961da5"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -204,6 +213,15 @@ namespace SpaceAttackers.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Point"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""27753368-06c0-4ab9-9eb5-15e1b1f3778f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -385,12 +403,45 @@ namespace SpaceAttackers.Input
                 },
                 {
                     ""name"": """",
+                    ""id"": ""963b5d31-a872-404b-8b6d-f27f4096707d"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""bcff2660-f967-4a05-8f6a-3cc176492432"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""365ed3e0-1763-4fff-86dc-a3d483ce96dc"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Point"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b8598ac-6a0e-4a51-b13f-58cbcf1cbc1c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -406,7 +457,9 @@ namespace SpaceAttackers.Input
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_MoveFocus = m_UI.FindAction("MoveFocus", throwIfNotFound: true);
+            m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
             m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
+            m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -523,13 +576,17 @@ namespace SpaceAttackers.Input
         private readonly InputActionMap m_UI;
         private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
         private readonly InputAction m_UI_MoveFocus;
+        private readonly InputAction m_UI_Click;
         private readonly InputAction m_UI_Submit;
+        private readonly InputAction m_UI_Point;
         public struct UIActions
         {
             private @GameInputAction m_Wrapper;
             public UIActions(@GameInputAction wrapper) { m_Wrapper = wrapper; }
             public InputAction @MoveFocus => m_Wrapper.m_UI_MoveFocus;
+            public InputAction @Click => m_Wrapper.m_UI_Click;
             public InputAction @Submit => m_Wrapper.m_UI_Submit;
+            public InputAction @Point => m_Wrapper.m_UI_Point;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -542,9 +599,15 @@ namespace SpaceAttackers.Input
                 @MoveFocus.started += instance.OnMoveFocus;
                 @MoveFocus.performed += instance.OnMoveFocus;
                 @MoveFocus.canceled += instance.OnMoveFocus;
+                @Click.started += instance.OnClick;
+                @Click.performed += instance.OnClick;
+                @Click.canceled += instance.OnClick;
                 @Submit.started += instance.OnSubmit;
                 @Submit.performed += instance.OnSubmit;
                 @Submit.canceled += instance.OnSubmit;
+                @Point.started += instance.OnPoint;
+                @Point.performed += instance.OnPoint;
+                @Point.canceled += instance.OnPoint;
             }
 
             private void UnregisterCallbacks(IUIActions instance)
@@ -552,9 +615,15 @@ namespace SpaceAttackers.Input
                 @MoveFocus.started -= instance.OnMoveFocus;
                 @MoveFocus.performed -= instance.OnMoveFocus;
                 @MoveFocus.canceled -= instance.OnMoveFocus;
+                @Click.started -= instance.OnClick;
+                @Click.performed -= instance.OnClick;
+                @Click.canceled -= instance.OnClick;
                 @Submit.started -= instance.OnSubmit;
                 @Submit.performed -= instance.OnSubmit;
                 @Submit.canceled -= instance.OnSubmit;
+                @Point.started -= instance.OnPoint;
+                @Point.performed -= instance.OnPoint;
+                @Point.canceled -= instance.OnPoint;
             }
 
             public void RemoveCallbacks(IUIActions instance)
@@ -580,7 +649,9 @@ namespace SpaceAttackers.Input
         public interface IUIActions
         {
             void OnMoveFocus(InputAction.CallbackContext context);
+            void OnClick(InputAction.CallbackContext context);
             void OnSubmit(InputAction.CallbackContext context);
+            void OnPoint(InputAction.CallbackContext context);
         }
     }
 }

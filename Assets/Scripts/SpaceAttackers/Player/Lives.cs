@@ -34,6 +34,12 @@ namespace SpaceAttackers.Player
 				yield return new WaitForEndOfFrame();
 			}
 
+			if (GameManager.Lives.PlayerLives <= 0)
+			{
+				// GameOverScreen.Singleton.ShowGameOverScreen();
+				yield break;
+			}
+
 			transform.position = new Vector3(0, 0.25f, 0);
 			_renderer.enabled = true;
 			PauseManager.Singleton.UnpauseGame();
