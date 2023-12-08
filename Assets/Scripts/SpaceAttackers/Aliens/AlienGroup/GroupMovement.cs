@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using SpaceAttackers.GameManager;
 using UnityEngine;
 
@@ -15,11 +16,15 @@ namespace SpaceAttackers.Aliens.AlienGroup
 		private Camera _camera;
 		private float CameraSize => _camera.orthographicSize * _camera.aspect;
 		private bool _coroutineStopped;
+		private GameObject[] _verticalRows;
+		private static readonly Vector3 StartingPosition = new(0, 2, 0);
 
 		private void Awake()
 		{
 			CalculateCurrentBounds();
 			_camera = Camera.main;
+			_verticalRows = transform.Cast<Transform>().Select(child => child.gameObject)
+				.ToArray();
 		}
 
 		private void Start()
@@ -31,7 +36,21 @@ namespace SpaceAttackers.Aliens.AlienGroup
 		{
 			_groupMoving = true;
 			_coroutineStopped = false;
+			var position = StartingPosition;
+			transform.position = StartingPosition;
+			foreach (var verticalRow in _verticalRows)
+			{
+				verticalRow.SetActive(true);
+			}
+
+			while (transform.position != StartingPosition)
+			{
+				transform.position = StartingPosition;
+				yield return new WaitForEndOfFrame();
+			}
+
 			CalculateCurrentBounds();
+
 			while (_groupMoving)
 			{
 				while (PauseManager.Singleton.IsPaused)
@@ -48,7 +67,8 @@ namespace SpaceAttackers.Aliens.AlienGroup
 					continue;
 				}
 
-				yield return StartCoroutine(LerpMovement(new Vector3(_currentDirection, 0, 0)));
+				yield return StartCoroutine(LerpMovement(new Vector3(_currentDirection, 0, 0), position));
+				position.x += _currentDirection;
 
 				switch (_currentDirection)
 				{
@@ -59,7 +79,8 @@ namespace SpaceAttackers.Aliens.AlienGroup
 						{
 							FlipDirection();
 							CalculateCurrentBounds();
-							yield return StartCoroutine(LerpMoveDown());
+							yield return StartCoroutine(LerpMoveDown(position));
+							position.y += -0.5f;
 						}
 
 						break;
@@ -69,7 +90,8 @@ namespace SpaceAttackers.Aliens.AlienGroup
 						{
 							FlipDirection();
 							CalculateCurrentBounds();
-							yield return StartCoroutine(LerpMoveDown());
+							yield return StartCoroutine(LerpMoveDown(position));
+							position.y += -0.5f;
 						}
 
 						break;
@@ -81,9 +103,9 @@ namespace SpaceAttackers.Aliens.AlienGroup
 			_coroutineStopped = true;
 		}
 
-		private IEnumerator LerpMoveDown()
+		private IEnumerator LerpMoveDown(Vector3 startingPosition)
 		{
-			yield return StartCoroutine(LerpMovement(new Vector3(0, -0.5f, 0)));
+			yield return StartCoroutine(LerpMovement(new Vector3(0, -0.5f, 0), startingPosition));
 		}
 
 		private float ClampToCameraSize(float number)
@@ -101,8 +123,14 @@ namespace SpaceAttackers.Aliens.AlienGroup
 			};
 		}
 
-		private IEnumerator LerpMovement(Vector3 vector)
+		private IEnumerator LerpMovement(Vector3 vector, Vector3 startingPosition)
 		{
+			while (transform.position != startingPosition)
+			{
+				transform.position = startingPosition;
+				yield return new WaitForEndOfFrame();
+			}
+
 			var lerpTime = 0f;
 			var lerpPosition = transform.position + vector;
 			while (lerpTime < 1)
@@ -150,11 +178,15 @@ namespace SpaceAttackers.Aliens.AlienGroup
 			}
 		}
 
-		public void StartMovement()
+		public IEnumerator StartMovement()
 		{
 			_currentDirection = RightDirection;
+			while (!_coroutineStopped)
+			{
+				yield return new WaitForEndOfFrame();
+			}
+
 			StartCoroutine(MovementCoroutine());
 		}
-		
 	}
 }
