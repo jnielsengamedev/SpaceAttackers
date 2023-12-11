@@ -5,17 +5,21 @@ using UnityEngine;
 namespace SpaceAttackers.Player
 {
 	[RequireComponent(typeof(Renderer))]
+	[RequireComponent(typeof(AudioSource))]
 	public class Lives : MonoBehaviour
 	{
 		private GameManager.Lives.SubtractLife _subtractLife;
 		[SerializeField] private ParticleSystem explosion;
 		[SerializeField] private GameOverScreen gameOverScreen;
+		[SerializeField] private AudioClip explosionSound;
 		private Renderer _renderer;
+		private AudioSource _audioSource;
 
 		private void Awake()
 		{
 			_subtractLife = GameManager.Lives.Singleton.AskForSubtractLife(gameObject);
 			_renderer = GetComponent<Renderer>();
+			_audioSource = GetComponent<AudioSource>();
 		}
 
 		public void PlayerShot()
@@ -28,6 +32,7 @@ namespace SpaceAttackers.Player
 		private IEnumerator ExplosionCoroutine()
 		{
 			explosion.Play();
+			_audioSource.PlayOneShot(explosionSound);
 			yield return new WaitForSeconds(0.03f);
 			_renderer.enabled = false;
 			while (explosion.isPlaying)

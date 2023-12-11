@@ -27,15 +27,17 @@ namespace SpaceAttackers.Aliens.VerticalRow
 
 		public void Shoot()
 		{
-			var activeAliens = _aliens.Where(child => child.gameObject.activeInHierarchy).ToArray();
-			if (activeAliens.Length == 0)
+			var activeAliens = _aliens.Where(child => child.isActive && child.gameObject.activeInHierarchy).ToArray();
+			try
+			{
+				var randomAlien = activeAliens[Random.Range(0, activeAliens.Length)];
+				randomAlien.ShootLaser();
+			}
+			catch
 			{
 				_shooting.LaserDestroyed();
 				gameObject.SetActive(false);
 			}
-
-			var randomAlien = activeAliens[Random.Range(0, activeAliens.Length)];
-			randomAlien.ShootLaser();
 		}
 
 		public void AlienDeactivated()

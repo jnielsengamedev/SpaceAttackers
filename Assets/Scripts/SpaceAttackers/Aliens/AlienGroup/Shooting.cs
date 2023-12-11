@@ -14,7 +14,7 @@ namespace SpaceAttackers.Aliens.AlienGroup
 		private bool _coroutineRunning;
 		private bool _shootingSessionInitiated;
 		private static readonly WaitForEndOfFrame EndOfFrame = new();
-		private static readonly WaitForSeconds HalfSecond = new(0.5f);
+		private static readonly WaitForSeconds TwoSeconds = new(2);
 
 		private void Awake()
 		{
@@ -23,9 +23,14 @@ namespace SpaceAttackers.Aliens.AlienGroup
 			_respawn = GetComponent<Respawn>();
 		}
 
+
+		private VerticalRowMessenger[] GetActiveRows()
+		{
+			return _verticalRows.Where(child => child.gameObject.activeInHierarchy).ToArray();
+		}
 		private VerticalRowMessenger GetRandomVerticalRow()
 		{
-			var activeRows = _verticalRows.Where(child => child.gameObject.activeInHierarchy).ToArray();
+			var activeRows = GetActiveRows();
 			
 			if (activeRows.Length == 0)
 			{
@@ -54,22 +59,17 @@ namespace SpaceAttackers.Aliens.AlienGroup
 					}
 					continue;
 				}
-				
-				if (_shootingSessionInitiated)
-				{
-					yield return EndOfFrame;
-					continue;
-				}
-				
-				yield return HalfSecond;
+
 				var verticalRow = GetRandomVerticalRow();
 				if (!verticalRow)
 				{
 					_coroutineRunning = false;
-					continue;
+					_shootingSessionInitiated = false;
+					break;
 				}
 				verticalRow.Shoot();
 				_shootingSessionInitiated = true;
+				yield return TwoSeconds;
 			}
 			
 			_respawn.RespawnAliens();
