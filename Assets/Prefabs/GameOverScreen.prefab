@@ -491,6 +491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3987250966841087567}
   - component: {fileID: 6659585717417774041}
+  - component: {fileID: 2608182394317129845}
   m_Layer: 0
   m_Name: GameOverScreen
   m_TagString: Untagged
@@ -535,6 +536,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2608182394317129845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6826899831151236861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cbef76a98e29d419bff50fa9e74db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 0}
+  scoreLabel: {fileID: 3531911048373183413}
 --- !u!1 &8749460374758282746
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +614,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6810728411776341903
 MonoBehaviour:

@@ -32,6 +32,7 @@ namespace SpaceAttackers.GameManager
 
 		public void UnpauseGame()
 		{
+			if (!PauseManager.Singleton) return;
 			PauseManager.Singleton.UnpauseGame();
 		}
 	}

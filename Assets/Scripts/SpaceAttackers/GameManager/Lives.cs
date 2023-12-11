@@ -22,6 +22,11 @@ namespace SpaceAttackers.GameManager
 			PlayerLives = lives;
 		}
 
+		private void OnDestroy()
+		{
+			Singleton = null;
+		}
+
 		private void SubtractLifeImplementation()
 		{
 			PlayerLives -= 1;

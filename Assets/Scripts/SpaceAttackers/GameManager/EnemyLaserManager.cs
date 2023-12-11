@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace SpaceAttackers.GameManager
@@ -12,6 +13,11 @@ namespace SpaceAttackers.GameManager
 		private void Awake()
 		{
 			Singleton = this;
+		}
+
+		private void OnDestroy()
+		{
+			Singleton = null;
 		}
 
 		public void ShootLaser(Vector3 position)

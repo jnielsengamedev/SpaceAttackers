@@ -3,18 +3,28 @@ using SpaceAttackers.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace SpaceAttackers.Player
+namespace SpaceAttackers.GameManager
 {
-	public class Input : MonoBehaviour
+	public class InputManager : MonoBehaviour
 	{
 		private GameInputAction _gameInputAction;
+		public static InputManager Singleton;
 		public float HorizontalInput { get; private set; }
 		public event Action ShootingFired;
 
 		private void Awake()
 		{
+			Singleton = this;
 			_gameInputAction = new GameInputAction();
 			EnableActions();
+		}
+
+		private void OnDestroy()
+		{
+			Singleton = null;
+			_gameInputAction.Spaceship.Movement.Disable();
+			_gameInputAction.Spaceship.Shooting.performed -= ShotsFired;
+			_gameInputAction.Spaceship.Shooting.Disable();
 		}
 
 		private void EnableActions()

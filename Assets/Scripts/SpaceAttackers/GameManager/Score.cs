@@ -18,6 +18,11 @@ namespace SpaceAttackers.GameManager
 			GameScore = 0;
 		}
 
+		private void OnDestroy()
+		{
+			Singleton = null;
+		}
+
 		private void AddScoreImplementation(long score)
 		{
 			GameScore += score;

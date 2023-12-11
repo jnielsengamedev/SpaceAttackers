@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace SpaceAttackers.GameManager
 {
@@ -12,6 +13,11 @@ namespace SpaceAttackers.GameManager
 		{
 			Singleton = this;
 			IsPaused = true;
+		}
+
+		private void OnDestroy()
+		{
+			Singleton = null;
 		}
 
 		private void Start()

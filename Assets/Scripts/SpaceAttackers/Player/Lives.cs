@@ -9,6 +9,7 @@ namespace SpaceAttackers.Player
 	{
 		private GameManager.Lives.SubtractLife _subtractLife;
 		[SerializeField] private ParticleSystem explosion;
+		[SerializeField] private GameOverScreen gameOverScreen;
 		private Renderer _renderer;
 
 		private void Awake()
@@ -36,7 +37,7 @@ namespace SpaceAttackers.Player
 
 			if (GameManager.Lives.PlayerLives <= 0)
 			{
-				// GameOverScreen.Singleton.ShowGameOverScreen();
+				gameOverScreen.ShowGameOverScreen();
 				yield break;
 			}
 

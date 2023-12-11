@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.002787841, g: 0.0030504116, b: 0.0024758386, a: 1}
+  m_IndirectSpecularColor: {r: 0.0028110105, g: 0.0030605753, b: 0.002509897, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2061,7 +2061,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 782232807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3cbef76a98e29d419bff50fa9e74db3, type: 3}
+  m_Script: {fileID: 11500000, guid: 162f761dcae44f63938951b9d4bdb61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &784573333
@@ -3118,6 +3118,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2608182394317129845, guid: 2aa5bda27c994cb4db10babf171e442b,
+        type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 1547390427}
+    - target: {fileID: 3531911048373183413, guid: 2aa5bda27c994cb4db10babf171e442b,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3987250966841087567, guid: 2aa5bda27c994cb4db10babf171e442b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3173,11 +3183,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 7524948036286130420, guid: 2aa5bda27c994cb4db10babf171e442b,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aa5bda27c994cb4db10babf171e442b, type: 3}
+--- !u!114 &1210881339 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2608182394317129845, guid: 2aa5bda27c994cb4db10babf171e442b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1210881337}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cbef76a98e29d419bff50fa9e74db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1297144967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5042,6 +5069,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4001486341472615290, guid: 14034aefa05c7f9458e0e4402001f472,
+        type: 3}
+      propertyPath: gameOverScreen
+      value: 
+      objectReference: {fileID: 1210881339}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -3,16 +3,13 @@ using UnityEngine;
 
 namespace SpaceAttackers.Player
 {
-	[RequireComponent(typeof(Input))]
 	public class Movement : MonoBehaviour
 	{
 		[SerializeField] private float moveSpeed;
-		private Input _input;
 		private Camera _camera;
 
 		private void Awake()
 		{
-			_input = GetComponent<Input>();
 			_camera = Camera.main;
 		}
 
@@ -32,7 +29,7 @@ namespace SpaceAttackers.Player
 				SetPosition(cameraEdge);
 			}
 
-			transform.Translate(Vector3.right * (_input.HorizontalInput * moveSpeed * Time.deltaTime));
+			transform.Translate(Vector3.right * (InputManager.Singleton.HorizontalInput * moveSpeed * Time.deltaTime));
 		}
 
 		private void SetPosition(float cameraEdge)

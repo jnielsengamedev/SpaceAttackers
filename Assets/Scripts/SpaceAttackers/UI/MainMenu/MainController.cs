@@ -1,3 +1,4 @@
+using System;
 using SpaceAttackers.GameManager;
 using SpaceAttackers.UI.MainMenu.Views;
 using UnityEngine;
@@ -15,6 +16,11 @@ namespace SpaceAttackers.UI.MainMenu
 			Views.Add("MainScreen", mainScreenInstance);
 			InitializeViews();
 			RegisterInitialView(Views["MainScreen"]);
+		}
+
+		private void Start()
+		{
+			loadingScreen.HideLoadingScreen();
 		}
 	}
 }
