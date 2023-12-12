@@ -21,3 +21,9 @@
 .menu-button:focus {
     border-color: deepskyblue;
 }
+
+.menu-field {
+    color: white;
+    font-size: 24px;
+    -unity-font-style: bold;
+}

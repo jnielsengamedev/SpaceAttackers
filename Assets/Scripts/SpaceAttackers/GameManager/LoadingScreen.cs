@@ -8,6 +8,7 @@ namespace SpaceAttackers.GameManager
 	{
 		private Animator _animator;
 		private Action _callback;
+		[SerializeField] private GameObject moonCamera;
 
 		private void Awake()
 		{
@@ -16,12 +17,14 @@ namespace SpaceAttackers.GameManager
 
 		public void ShowLoadingScreen(Action callback)
 		{
+			moonCamera.SetActive(true);
 			_callback = callback;
 			_animator.SetTrigger("ShowLoadingScreen");
 		}
 
 		public void HideLoadingScreen()
 		{
+			moonCamera.SetActive(true);
 			_animator.SetTrigger("HideLoadingScreen");
 		}
 
@@ -32,6 +35,7 @@ namespace SpaceAttackers.GameManager
 
 		public void UnpauseGame()
 		{
+			moonCamera.SetActive(false);
 			if (!PauseManager.Singleton) return;
 			PauseManager.Singleton.UnpauseGame();
 		}

@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Menu.uss?fileID=7433441132597879392&amp;guid=b9a2455721323c723a62927a9e8d80c6&amp;type=3#Menu" />
+    <ui:Label tabindex="-1" text="Graphics" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu-header" style="color: rgb(255, 255, 255);" />
+    <ui:ScrollView style="flex-grow: 1;">
+        <ui:DropdownField label="Resolution" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="Resolution" class="menu-field" />
+        <ui:Toggle label="VSync" name="VSync" class="menu-field" />
+        <ui:Toggle label="Windowed" name="Windowed" class="menu-field" />
+        <ui:DropdownField label="Quality Preset" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="QualityPreset" class="menu-field" />
+        <ui:Toggle label="FSR 1.0" name="FSR" class="menu-field" />
+        <ui:VisualElement name="RenderScale" class="menu-field" style="flex-direction: row;">
+            <ui:Slider picking-mode="Ignore" label="Render Scale" value="1" high-value="1" style="flex-grow: 1;" />
+            <ui:Label tabindex="-1" text="1.0" parse-escape-sequences="true" display-tooltip-when-elided="true" style="align-self: center;" />
+        </ui:VisualElement>
+    </ui:ScrollView>
+    <ui:Button text="Apply" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Apply" class="menu-button" />
+    <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Back" class="menu-button" />
+</ui:UXML>

@@ -540,6 +540,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewElementNames:
   - MainScreen
+  - Settings
+  - GraphicsSettings
+  - AudioSettings
   loadingScreen: {fileID: 1925573067}
 --- !u!1001 &1925573063
 PrefabInstance:

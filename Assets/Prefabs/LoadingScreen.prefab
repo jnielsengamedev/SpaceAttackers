@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca02d83f845393686b1f176f4ae10b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moonCamera: {fileID: 989087080039227353}
 --- !u!1 &989087080039227353
 GameObject:
   m_ObjectHideFlags: 0

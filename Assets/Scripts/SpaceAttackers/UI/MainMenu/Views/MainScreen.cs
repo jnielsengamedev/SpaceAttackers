@@ -28,14 +28,13 @@ namespace SpaceAttackers.UI.MainMenu.Views
 			_settings = MainElement.Q<Button>("Settings");
 			_quit = MainElement.Q<Button>("Quit");
 
-			_start.Focus();
-			_settings.SetEnabled(false);
 			if (_quitNotSupported) _quit.SetEnabled(false);
 		}
 
 		public override void RegisterEvents()
 		{
 			_start.clicked += Start;
+			_settings.clicked += Settings;
 			if (!_quitNotSupported)
 			{
 				_quit.clicked += Quit;
@@ -45,16 +44,27 @@ namespace SpaceAttackers.UI.MainMenu.Views
 		public override void UnregisterEvents()
 		{
 			_start.clicked -= Start;
+			_settings.clicked -= Settings;
 			if (!_quitNotSupported)
 			{
 				_quit.clicked -= Quit;
 			}
 		}
 
+		protected override void ViewShown()
+		{
+			_start.Focus();
+		}
+
 		private void Start()
 		{
 			Controller.UnregisterAllEvents();
 			_loadingScreen.ShowLoadingScreen(LoadGame);
+		}
+
+		private void Settings()
+		{
+			Controller.SwitchView("Settings");
 		}
 
 		private static void Quit()

@@ -1,4 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="MainScreen" src="project://database/Assets/UI%20Toolkit/Views/MainMenu/MainScreen.uxml?fileID=9197481963319205126&amp;guid=2c0743a8f887d6a06ab2cf69ce81aaaf&amp;type=3#MainScreen" />
-    <ui:Instance template="MainScreen" name="MainScreen" style="flex-grow: 1; display: flex;" />
+    <ui:Template name="Settings" src="project://database/Assets/UI%20Toolkit/Views/MainMenu/Settings.uxml?fileID=9197481963319205126&amp;guid=f9e74d2e8a1b98b42a3b20bbc6f7faaa&amp;type=3#Settings" />
+    <ui:Template name="GraphicsSettings" src="project://database/Assets/UI%20Toolkit/Views/MainMenu/GraphicsSettings.uxml?fileID=9197481963319205126&amp;guid=9c0f7e6c87b31384bb58a24156934ee3&amp;type=3#GraphicsSettings" />
+    <ui:Template name="AudioSettings" src="project://database/Assets/UI%20Toolkit/Views/MainMenu/AudioSettings.uxml?fileID=9197481963319205126&amp;guid=f49c9a3c9b280b447884203cad389616&amp;type=3#AudioSettings" />
+    <ui:Instance template="MainScreen" name="MainScreen" style="flex-grow: 1; display: none;" />
+    <ui:Instance template="Settings" name="Settings" style="flex-grow: 1; display: none;" />
+    <ui:Instance template="GraphicsSettings" name="GraphicsSettings" style="flex-grow: 1; display: none;" />
+    <ui:Instance template="AudioSettings" name="AudioSettings" style="flex-grow: 1; display: none;" />
 </ui:UXML>

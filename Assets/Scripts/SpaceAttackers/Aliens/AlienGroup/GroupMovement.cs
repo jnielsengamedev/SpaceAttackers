@@ -48,8 +48,8 @@ namespace SpaceAttackers.Aliens.AlienGroup
 				transform.position = StartingPosition;
 				yield return new WaitForEndOfFrame();
 			}
-
 			CalculateCurrentBounds();
+
 
 			while (_groupMoving)
 			{

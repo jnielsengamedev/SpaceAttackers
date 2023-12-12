@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Menu.uss?fileID=7433441132597879392&amp;guid=b9a2455721323c723a62927a9e8d80c6&amp;type=3#Menu" />
+    <ui:Label tabindex="-1" text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu-header" style="color: rgb(255, 255, 255);" />
+    <ui:ScrollView style="flex-grow: 1;">
+        <ui:Button text="Graphics" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Graphics" class="menu-button" />
+        <ui:Button text="Audio" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Audio" class="menu-button" />
+    </ui:ScrollView>
+    <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Back" class="menu-button" />
+</ui:UXML>
