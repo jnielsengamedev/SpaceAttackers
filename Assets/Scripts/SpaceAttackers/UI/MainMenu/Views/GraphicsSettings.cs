@@ -51,18 +51,27 @@ namespace SpaceAttackers.UI.MainMenu.Views
 		{
 			_settingsData = _graphicsSettingsManager.Data.ShallowClone();
 			var resolutionIsEmpty = _settingsData.resolution.Equals(new Resolution());
-			_resolutions = Screen.resolutions.Select(UnityResolutionToGameResolution).ToList();
+			_resolutions = Screen.resolutions.Select(resolution => (Resolution)resolution).ToList();
 			if (!_resolutions.Contains(_settingsData.resolution) && !resolutionIsEmpty)
 				_resolutions.Add(_settingsData.resolution);
 			var resolutionIndex =
 				resolutionIsEmpty
-					? _resolutions.IndexOf(UnityResolutionToGameResolution(Screen.currentResolution))
+					? _resolutions.IndexOf((Resolution)Screen.currentResolution)
 					: _resolutions.IndexOf(_settingsData.resolution);
 			_resolution.choices = _resolutions.Select(resolution => resolution.ToString()).ToList();
 			_resolution.index = resolutionIndex;
 			_vsync.value = _settingsData.vsync;
 			_windowed.value = _settingsData.windowed;
-			_qualityPreset.index = (int)_settingsData.qualityPreset;
+
+			if (_settingsData.qualityPreset == QualityPresets.Default)
+			{
+				_qualityPreset.index = QualitySettings.GetQualityLevel();
+			}
+			else
+			{
+				_qualityPreset.index = (int)_settingsData.qualityPreset;
+			}
+
 			_fsr.value = _settingsData.fsr;
 			_renderScaleSlider.value = _settingsData.renderScale;
 			_renderScaleLabel.text = _settingsData.renderScale.ToString(CultureInfo.InvariantCulture);
@@ -77,11 +86,13 @@ namespace SpaceAttackers.UI.MainMenu.Views
 			_qualityPreset.RegisterValueChangedCallback(QualityPresetValueChanged);
 			_fsr.RegisterValueChangedCallback(FsrValueChanged);
 			_renderScaleSlider.RegisterValueChangedCallback(RenderScaleValueChanged);
+			_apply.clicked += Apply;
 			_back.clicked += Back;
 		}
 
 		public override void UnregisterEvents()
 		{
+			_apply.clicked -= Apply;
 			_back.clicked -= Back;
 		}
 
@@ -123,6 +134,7 @@ namespace SpaceAttackers.UI.MainMenu.Views
 		private void RenderScaleValueChanged(ChangeEvent<float> evt)
 		{
 			_settingsData.renderScale = evt.newValue;
+			_renderScaleLabel.text = evt.newValue.ToString(CultureInfo.InvariantCulture);
 			CheckIfSettingsDataChanged();
 		}
 
@@ -131,19 +143,17 @@ namespace SpaceAttackers.UI.MainMenu.Views
 			_apply.SetEnabled(!_settingsData.Equals(_graphicsSettingsManager.Data));
 		}
 
+		private void Apply()
+		{
+			ApplyGraphicsSettings.Apply(_settingsData);
+			_graphicsSettingsManager.SetData(_settingsData);
+			_settingsData = _graphicsSettingsManager.Data.ShallowClone();
+			_apply.SetEnabled(false);
+		}
+
 		private void Back()
 		{
 			Controller.SwitchView("Settings");
-		}
-
-		private Resolution UnityResolutionToGameResolution(UnityEngine.Resolution resolution)
-		{
-			return new Resolution
-			{
-				width = resolution.width,
-				height = resolution.height,
-				refreshRate = resolution.refreshRateRatio.value
-			};
 		}
 	}
 }

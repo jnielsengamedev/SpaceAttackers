@@ -29,18 +29,60 @@ namespace SpaceAttackers.Data
 	[Serializable]
 	public struct Resolution
 	{
-		public long width;
-		public long height;
-		public double refreshRate;
+		public int width;
+		public int height;
+		public RefreshRate refreshRate;
 
 		public override string ToString()
 		{
-			return $"{width}x{height} {refreshRate}Hz";
+			return $"{width}x{height} {refreshRate.Value}Hz";
 		}
 
 		public bool Equals(Resolution resolution)
 		{
-			return width == resolution.width && height == resolution.height && refreshRate == resolution.refreshRate;
+			return width == resolution.width && height == resolution.height &&
+			       refreshRate.Equals(resolution.refreshRate);
+		}
+
+		public static explicit operator Resolution(UnityEngine.Resolution resolution)
+		{
+			return new Resolution
+			{
+				width = resolution.width,
+				height = resolution.height,
+				refreshRate = resolution.refreshRateRatio
+			};
+		}
+	}
+
+	[Serializable]
+	public struct RefreshRate
+	{
+		public uint denominator;
+		public uint numerator;
+		public double Value => numerator / denominator;
+
+		public bool Equals(RefreshRate refreshRate)
+		{
+			return denominator == refreshRate.denominator && numerator == refreshRate.numerator;
+		}
+
+		public static implicit operator UnityEngine.RefreshRate(RefreshRate refreshRate)
+		{
+			return new UnityEngine.RefreshRate
+			{
+				numerator = refreshRate.numerator,
+				denominator = refreshRate.numerator
+			};
+		}
+
+		public static implicit operator RefreshRate(UnityEngine.RefreshRate refreshRate)
+		{
+			return new RefreshRate
+			{
+				numerator = refreshRate.numerator,
+				denominator = refreshRate.denominator
+			};
 		}
 	}
 
@@ -48,6 +90,7 @@ namespace SpaceAttackers.Data
 	{
 		Low = 0,
 		Medium = 1,
-		High = 2
+		High = 2,
+		Default = 3
 	}
 }
