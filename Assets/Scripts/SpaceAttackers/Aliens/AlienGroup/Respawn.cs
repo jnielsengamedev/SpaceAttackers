@@ -10,19 +10,17 @@ namespace SpaceAttackers.Aliens.AlienGroup
 	{
 		private GroupMovement _movement;
 		private Shooting _shooting;
-		private Lives.AddLife _addLife;
 
 		private void Awake()
 		{
 			_movement = GetComponent<GroupMovement>();
 			_shooting = GetComponent<Shooting>();
-			_addLife = Lives.Singleton.AskForAddLife(gameObject);
 		}
 
 		public void RespawnAliens()
 		{
-			StartCoroutine(_movement.StopMovement());
-			_addLife();
+			StartCoroutine(_movement.StopMovement()); 
+			Lives.Singleton.AddLife();
 			StartCoroutine(WaitingCoroutine());
 		}
 

@@ -8,7 +8,6 @@ namespace SpaceAttackers.Player
 	[RequireComponent(typeof(AudioSource))]
 	public class Lives : MonoBehaviour
 	{
-		private GameManager.Lives.SubtractLife _subtractLife;
 		[SerializeField] private ParticleSystem explosion;
 		[SerializeField] private GameOverScreen gameOverScreen;
 		[SerializeField] private AudioClip explosionSound;
@@ -17,14 +16,20 @@ namespace SpaceAttackers.Player
 
 		private void Awake()
 		{
-			_subtractLife = GameManager.Lives.Singleton.AskForSubtractLife(gameObject);
 			_renderer = GetComponent<Renderer>();
 			_audioSource = GetComponent<AudioSource>();
 		}
 
 		public void PlayerShot()
 		{
-			_subtractLife();
+			GameManager.Lives.Singleton.SubtractLife();
+			PauseManager.Singleton.PauseGame();
+			StartCoroutine(ExplosionCoroutine());
+		}
+
+		public void PlayerBoom()
+		{
+			GameManager.Lives.Singleton.DeleteLives();
 			PauseManager.Singleton.PauseGame();
 			StartCoroutine(ExplosionCoroutine());
 		}

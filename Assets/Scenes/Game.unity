@@ -1190,6 +1190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a19765c22dcf784b86d2735bc56d450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCollider: {fileID: 1752327426}
+  playerLives: {fileID: 1752327422}
 --- !u!114 &543074724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4290,6 +4292,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2323803551961447304, guid: 92091811519c40f42ae42bb62a324b3b,
     type: 3}
   m_PrefabInstance: {fileID: 1729897187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1752327422 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4001486341472615290, guid: 14034aefa05c7f9458e0e4402001f472,
+    type: 3}
+  m_PrefabInstance: {fileID: 1577128980221867196}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cc026555324f06aa055433f05ee72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &1752327426 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 2627885106875339863, guid: 14034aefa05c7f9458e0e4402001f472,
+    type: 3}
+  m_PrefabInstance: {fileID: 1577128980221867196}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1793744660
 PrefabInstance:

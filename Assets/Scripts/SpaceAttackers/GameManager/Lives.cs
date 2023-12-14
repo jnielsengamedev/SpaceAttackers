@@ -10,10 +10,6 @@ namespace SpaceAttackers.GameManager
 		public static Lives Singleton;
 		public static long PlayerLives { get; private set; }
 
-		public delegate void SubtractLife();
-
-		public delegate void AddLife();
-
 		public event Action<long> LivesUpdated;
 
 		private void Awake()
@@ -27,29 +23,22 @@ namespace SpaceAttackers.GameManager
 			Singleton = null;
 		}
 
-		private void SubtractLifeImplementation()
+		public void SubtractLife()
 		{
 			PlayerLives -= 1;
 			LivesUpdated?.Invoke(PlayerLives);
 		}
 
-		private void AddLifeImplementation()
+		public void DeleteLives()
 		{
-			PlayerLives += 1;
+			PlayerLives = 0;
 			LivesUpdated?.Invoke(PlayerLives);
 		}
 
-		public SubtractLife AskForSubtractLife(GameObject gameObj)
+		public void AddLife()
 		{
-			if (gameObj.CompareTag("Player")) return SubtractLifeImplementation;
-
-			return () => { };
-		}
-
-		public AddLife AskForAddLife(GameObject gameObj)
-		{
-			if (gameObj.CompareTag("AlienGroup")) return AddLifeImplementation;
-			return () => { };
+			PlayerLives += 1;
+			LivesUpdated?.Invoke(PlayerLives);
 		}
 	}
 }

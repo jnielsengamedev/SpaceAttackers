@@ -16,6 +16,8 @@ namespace SpaceAttackers.Aliens.AlienGroup
 		private bool _coroutineStopped;
 		private GameObject[] _verticalRows;
 		private static readonly Vector3 StartingPosition = new(0, 2, 0);
+		[SerializeField] private Collider playerCollider;
+		[SerializeField] private Player.Lives playerLives;
 
 		private void Awake()
 		{
@@ -52,6 +54,7 @@ namespace SpaceAttackers.Aliens.AlienGroup
 
 			while (_groupMoving)
 			{
+				
 				while (PauseManager.Singleton.IsPaused)
 				{
 					yield return new WaitForEndOfFrame();
@@ -63,6 +66,12 @@ namespace SpaceAttackers.Aliens.AlienGroup
 
 				if (_groupMoving == false)
 				{
+					break;
+				}
+				
+				if (GetMaxBounds().Intersects(playerCollider.bounds) && _groupMoving)
+				{
+					playerLives.PlayerBoom();
 					continue;
 				}
 
@@ -96,6 +105,7 @@ namespace SpaceAttackers.Aliens.AlienGroup
 						break;
 				}
 
+				
 				yield return new WaitForSeconds(0.5f);
 			}
 
