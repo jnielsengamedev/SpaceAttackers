@@ -7,8 +7,6 @@ namespace SpaceAttackers.Aliens.AlienGroup
 {
 	public class GroupMovement : MonoBehaviour
 	{
-		private float _minBoundsX;
-		private float _maxBoundsX;
 		private float _currentDirection = RightDirection;
 		private const float RightDirection = 0.5f;
 		private const float LeftDirection = -RightDirection;
@@ -48,7 +46,8 @@ namespace SpaceAttackers.Aliens.AlienGroup
 				transform.position = StartingPosition;
 				yield return new WaitForEndOfFrame();
 			}
-			CalculateCurrentBounds();
+
+			var boundsX = CalculateCurrentBounds();
 
 
 			while (_groupMoving)
@@ -73,23 +72,23 @@ namespace SpaceAttackers.Aliens.AlienGroup
 				switch (_currentDirection)
 				{
 					case RightDirection:
-						_maxBoundsX = ClampToCameraSize(_maxBoundsX += _currentDirection);
+						boundsX.Max = ClampToCameraSize(boundsX.Max += _currentDirection);
 
-						if (_maxBoundsX >= CameraSize)
+						if (boundsX.Max >= CameraSize)
 						{
 							FlipDirection();
-							CalculateCurrentBounds();
+							boundsX = CalculateCurrentBounds();
 							yield return StartCoroutine(LerpMoveDown(position));
 							position.y += -0.5f;
 						}
 
 						break;
 					case LeftDirection:
-						_minBoundsX = ClampToCameraSize(_minBoundsX += _currentDirection);
-						if (_minBoundsX <= -CameraSize)
+						boundsX.Min = ClampToCameraSize(boundsX.Min += _currentDirection);
+						if (boundsX.Min <= -CameraSize)
 						{
 							FlipDirection();
-							CalculateCurrentBounds();
+							boundsX = CalculateCurrentBounds();
 							yield return StartCoroutine(LerpMoveDown(position));
 							position.y += -0.5f;
 						}
@@ -142,16 +141,15 @@ namespace SpaceAttackers.Aliens.AlienGroup
 			}
 		}
 
-		public void CalculateCurrentBounds()
+		public BoundsX CalculateCurrentBounds()
 		{
 			var maxBounds = GetMaxBounds();
-			_minBoundsX = maxBounds.min.x;
-			_maxBoundsX = maxBounds.max.x;
+			return new BoundsX(maxBounds.min.x, maxBounds.max.x);
 		}
 
 		private Bounds GetMaxBounds()
 		{
-			var renderers = gameObject.GetComponentsInChildren<Renderer>();
+			var renderers = gameObject.GetComponentsInChildren<MeshRenderer>();
 
 			if (renderers.Length == 0)
 			{
@@ -187,6 +185,18 @@ namespace SpaceAttackers.Aliens.AlienGroup
 			}
 
 			StartCoroutine(MovementCoroutine());
+		}
+	}
+
+	public struct BoundsX
+	{
+		public float Min;
+		public float Max;
+
+		public BoundsX(float min, float max)
+		{
+			Min = min;
+			Max = max;
 		}
 	}
 }
