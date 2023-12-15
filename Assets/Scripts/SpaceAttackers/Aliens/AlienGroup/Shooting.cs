@@ -28,10 +28,11 @@ namespace SpaceAttackers.Aliens.AlienGroup
 		{
 			return _verticalRows.Where(child => child.gameObject.activeInHierarchy).ToArray();
 		}
+
 		private VerticalRowMessenger GetRandomVerticalRow()
 		{
 			var activeRows = GetActiveRows();
-			
+
 			if (activeRows.Length == 0)
 			{
 				return null;
@@ -57,6 +58,7 @@ namespace SpaceAttackers.Aliens.AlienGroup
 					{
 						break;
 					}
+
 					continue;
 				}
 
@@ -67,11 +69,12 @@ namespace SpaceAttackers.Aliens.AlienGroup
 					_shootingSessionInitiated = false;
 					break;
 				}
+
 				verticalRow.Shoot();
 				_shootingSessionInitiated = true;
 				yield return TwoSeconds;
 			}
-			
+
 			_respawn.RespawnAliens();
 		}
 

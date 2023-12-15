@@ -27,3 +27,12 @@
     font-size: 24px;
     -unity-font-style: bold;
 }
+
+.unity-base-field:focus > .unity-base-field__label {
+    color: deepskyblue !important;
+}
+
+.unity-base-popup-field__input {
+    background-color: white !important;
+    color: black !important;
+}

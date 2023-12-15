@@ -1,3 +1,4 @@
+using SpaceAttackers.Data;
 using SpaceAttackers.GameManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,16 +11,14 @@ namespace SpaceAttackers.UI.MainMenu.Views
 		private Button _start;
 		private Button _settings;
 		private Button _quit;
+		private Label _version;
 
 		private readonly LoadingScreen _loadingScreen;
-		private bool _quitNotSupported;
 
 		public MainScreen(VisualElement element, BaseController controller, LoadingScreen loadingScreen) : base(element,
 			controller)
 		{
 			_loadingScreen = loadingScreen;
-			_quitNotSupported = Application.platform is RuntimePlatform.WebGLPlayer or RuntimePlatform.LinuxEditor
-				or RuntimePlatform.WindowsEditor or RuntimePlatform.OSXEditor;
 		}
 
 		public override void GetElements()
@@ -27,15 +26,17 @@ namespace SpaceAttackers.UI.MainMenu.Views
 			_start = MainElement.Q<Button>("Start");
 			_settings = MainElement.Q<Button>("Settings");
 			_quit = MainElement.Q<Button>("Quit");
+			_version = MainElement.Q<Label>("Version");
 
-			if (_quitNotSupported) _quit.SetEnabled(false);
+			_version.text = $"v{Application.version}";
+			if (UnsupportedPlatforms.IsUnsupportedPlatform) _quit.SetEnabled(false);
 		}
 
 		public override void RegisterEvents()
 		{
 			_start.clicked += Start;
 			_settings.clicked += Settings;
-			if (!_quitNotSupported)
+			if (!UnsupportedPlatforms.IsUnsupportedPlatform)
 			{
 				_quit.clicked += Quit;
 			}
@@ -45,7 +46,7 @@ namespace SpaceAttackers.UI.MainMenu.Views
 		{
 			_start.clicked -= Start;
 			_settings.clicked -= Settings;
-			if (!_quitNotSupported)
+			if (!UnsupportedPlatforms.IsUnsupportedPlatform)
 			{
 				_quit.clicked -= Quit;
 			}

@@ -50,7 +50,7 @@ namespace SpaceAttackers.Input
             ],
             ""bindings"": [
                 {
-                    ""name"": ""Keyboard"",
+                    ""name"": ""Keyboard WASD"",
                     ""id"": ""ae85a72e-9f75-4194-8be8-ef431486b428"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -75,6 +75,39 @@ namespace SpaceAttackers.Input
                     ""name"": ""positive"",
                     ""id"": ""2570908a-3653-4267-913e-d7027ba21551"",
                     ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard Arrow Keys"",
+                    ""id"": ""915d0192-e447-474d-a98b-674e7d0e4aec"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""44173832-c700-4035-bc12-0ce7b7a0f9b9"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""8730676e-cee8-4d2d-9a98-43853e1ee867"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -269,6 +302,61 @@ namespace SpaceAttackers.Input
                 }
             ],
             ""bindings"": [
+                {
+                    ""name"": ""Keyboard WASD"",
+                    ""id"": ""4e6c5ae0-9967-4cd0-b4db-da74a0c0b1a8"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveFocus"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""347d1c39-d2b7-4a8d-ac2d-e969b8664208"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveFocus"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""7064ba45-b004-4e8f-992b-a2c7688d6798"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveFocus"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""655269bc-5ba0-41de-a1e9-e12bcac98052"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveFocus"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""07cab2e6-25f3-4d92-9533-ba4ee496ba47"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveFocus"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
                 {
                     ""name"": ""Keyboard Arrow Keys"",
                     ""id"": ""50b995c5-fef1-4a0d-a325-76ce3ef515b4"",

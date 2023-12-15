@@ -9,7 +9,7 @@
         <ui:Toggle label="FSR 1.0" name="FSR" class="menu-field" />
         <ui:VisualElement name="RenderScale" class="menu-field" style="flex-direction: row;">
             <ui:Slider picking-mode="Ignore" label="Render Scale" value="1" high-value="1" style="flex-grow: 1;" />
-            <ui:Label tabindex="-1" text="1.0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RenderScaleLabel" style="align-self: center;" />
+            <ui:Label tabindex="-1" text="100%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RenderScaleLabel" style="align-self: center;" />
         </ui:VisualElement>
     </ui:ScrollView>
     <ui:Button text="Apply" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Apply" class="menu-button" />

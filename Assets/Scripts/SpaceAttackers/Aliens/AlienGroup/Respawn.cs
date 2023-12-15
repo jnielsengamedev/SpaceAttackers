@@ -19,7 +19,7 @@ namespace SpaceAttackers.Aliens.AlienGroup
 
 		public void RespawnAliens()
 		{
-			StartCoroutine(_movement.StopMovement()); 
+			StartCoroutine(_movement.StopMovement());
 			Lives.Singleton.AddLife();
 			StartCoroutine(WaitingCoroutine());
 		}
@@ -27,6 +27,7 @@ namespace SpaceAttackers.Aliens.AlienGroup
 		private IEnumerator WaitingCoroutine()
 		{
 			yield return new WaitForSeconds(0.5f);
+			_movement.AddSpeed();
 			yield return StartCoroutine(_movement.StartMovement());
 			_shooting.StartShooting();
 			PauseManager.Singleton.UnpauseGame();

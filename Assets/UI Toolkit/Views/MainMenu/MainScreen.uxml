@@ -4,4 +4,5 @@
     <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Start" class="menu-button" />
     <ui:Button text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Settings" class="menu-button" />
     <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Quit" class="menu-button" />
+    <ui:Label tabindex="-1" text="v0.0.0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Version" style="color: rgb(255, 255, 255); font-size: 32px; -unity-font-style: bold; flex-grow: 1; -unity-text-align: lower-left;" />
 </ui:UXML>

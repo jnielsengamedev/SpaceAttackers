@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+﻿using System;
 using SpaceAttackers.Data;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -14,6 +14,10 @@ namespace SpaceAttackers.UI.MainMenu.Views
 		private Button _back;
 		private AudioSettingsDataManager _audioSettings;
 
+
+		private static string VolumePercentage(float volume) =>
+			$"{Math.Round(volume * 100, 2)}%";
+
 		public AudioSettings(VisualElement element, BaseController controller) : base(element, controller)
 		{
 		}
@@ -27,7 +31,7 @@ namespace SpaceAttackers.UI.MainMenu.Views
 			_back = MainElement.Q<Button>("Back");
 			_audioSettings = new AudioSettingsDataManager();
 			_volumeSlider.value = _audioSettings.Data.volume;
-			_volumeLabel.text = _audioSettings.Data.volume.ToString(CultureInfo.InvariantCulture);
+			_volumeLabel.text = VolumePercentage(_audioSettings.Data.volume);
 		}
 
 		public override void RegisterEvents()
@@ -52,7 +56,7 @@ namespace SpaceAttackers.UI.MainMenu.Views
 			data.volume = evt.newValue;
 			_audioSettings.SetData(data);
 			AudioListener.volume = evt.newValue;
-			_volumeLabel.text = evt.newValue.ToString(CultureInfo.InvariantCulture);
+			_volumeLabel.text = VolumePercentage(evt.newValue);
 		}
 
 		private void Back()

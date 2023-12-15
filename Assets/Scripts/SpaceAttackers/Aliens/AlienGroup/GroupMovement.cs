@@ -10,19 +10,20 @@ namespace SpaceAttackers.Aliens.AlienGroup
 		private float _currentDirection = RightDirection;
 		private const float RightDirection = 0.5f;
 		private const float LeftDirection = -RightDirection;
+		private const float DownDirection = -RightDirection;
 		private bool _groupMoving;
-		private Camera _camera;
-		private float CameraSize => _camera.orthographicSize * _camera.aspect;
+		private float CameraSize => camera.orthographicSize * camera.aspect;
 		private bool _coroutineStopped;
 		private GameObject[] _verticalRows;
 		private static readonly Vector3 StartingPosition = new(0, 2, 0);
+		private float _currentSpeed = 1;
 		[SerializeField] private Collider playerCollider;
 		[SerializeField] private Player.Lives playerLives;
+		[SerializeField] private new Camera camera;
 
 		private void Awake()
 		{
 			CalculateCurrentBounds();
-			_camera = Camera.main;
 			_verticalRows = transform.Cast<Transform>().Select(child => child.gameObject)
 				.ToArray();
 		}
@@ -51,10 +52,8 @@ namespace SpaceAttackers.Aliens.AlienGroup
 
 			var boundsX = CalculateCurrentBounds();
 
-
 			while (_groupMoving)
 			{
-				
 				while (PauseManager.Singleton.IsPaused)
 				{
 					yield return new WaitForEndOfFrame();
@@ -68,8 +67,8 @@ namespace SpaceAttackers.Aliens.AlienGroup
 				{
 					break;
 				}
-				
-				if (GetMaxBounds().Intersects(playerCollider.bounds) && _groupMoving)
+
+				if (GetMaxBounds().Intersects(playerCollider.bounds) && _verticalRows.Any(row => row.activeInHierarchy))
 				{
 					playerLives.PlayerBoom();
 					continue;
@@ -105,8 +104,7 @@ namespace SpaceAttackers.Aliens.AlienGroup
 						break;
 				}
 
-				
-				yield return new WaitForSeconds(0.5f);
+				yield return new WaitForSeconds(0.5f / _currentSpeed);
 			}
 
 			_coroutineStopped = true;
@@ -114,7 +112,7 @@ namespace SpaceAttackers.Aliens.AlienGroup
 
 		private IEnumerator LerpMoveDown(Vector3 startingPosition)
 		{
-			yield return StartCoroutine(LerpMovement(new Vector3(0, -0.5f, 0), startingPosition));
+			yield return StartCoroutine(LerpMovement(new Vector3(0, DownDirection, 0), startingPosition));
 		}
 
 		private float ClampToCameraSize(float number)
@@ -195,6 +193,11 @@ namespace SpaceAttackers.Aliens.AlienGroup
 			}
 
 			StartCoroutine(MovementCoroutine());
+		}
+
+		public void AddSpeed()
+		{
+			_currentSpeed = Mathf.Clamp(_currentSpeed += 0.1f, 0, 2);
 		}
 	}
 

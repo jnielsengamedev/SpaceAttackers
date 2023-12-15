@@ -8,7 +8,7 @@ namespace SpaceAttackers.Data
 		public Resolution resolution;
 		public bool vsync;
 		public bool windowed;
-		public QualityPresets qualityPreset = QualityPresets.High;
+		public QualityPresets qualityPreset = QualityPresets.Default;
 		public bool fsr;
 		public float renderScale = 1.0f;
 

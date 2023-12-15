@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SpaceAttackers.Data;
 using UnityEngine;
@@ -24,6 +24,9 @@ namespace SpaceAttackers.UI.MainMenu.Views
 		private GraphicsSettingsDataManager _graphicsSettingsManager;
 		private GraphicsSettingsData _settingsData;
 		private List<Resolution> _resolutions;
+
+		private static string RenderScalePercentage(float renderScale) =>
+			$"{Math.Round(renderScale * 100, 2)}%";
 
 		public GraphicsSettings(VisualElement element, BaseController controller) : base(element, controller)
 		{
@@ -50,18 +53,27 @@ namespace SpaceAttackers.UI.MainMenu.Views
 		private void PopulateElements()
 		{
 			_settingsData = _graphicsSettingsManager.Data.ShallowClone();
-			var resolutionIsEmpty = _settingsData.resolution.Equals(new Resolution());
-			_resolutions = Screen.resolutions.Select(resolution => (Resolution)resolution).ToList();
-			if (!_resolutions.Contains(_settingsData.resolution) && !resolutionIsEmpty)
-				_resolutions.Add(_settingsData.resolution);
-			var resolutionIndex =
-				resolutionIsEmpty
-					? _resolutions.IndexOf((Resolution)Screen.currentResolution)
-					: _resolutions.IndexOf(_settingsData.resolution);
-			_resolution.choices = _resolutions.Select(resolution => resolution.ToString()).ToList();
-			_resolution.index = resolutionIndex;
-			_vsync.value = _settingsData.vsync;
-			_windowed.value = _settingsData.windowed;
+			if (!UnsupportedPlatforms.IsUnsupportedPlatform)
+			{
+				var resolutionIsEmpty = _settingsData.resolution.Equals(new Resolution());
+				_resolutions = Screen.resolutions.Select(resolution => (Resolution)resolution).ToList();
+				if (!_resolutions.Contains(_settingsData.resolution) && !resolutionIsEmpty)
+					_resolutions.Add(_settingsData.resolution);
+				var resolutionIndex =
+					resolutionIsEmpty
+						? _resolutions.IndexOf((Resolution)Screen.currentResolution)
+						: _resolutions.IndexOf(_settingsData.resolution);
+				_resolution.choices = _resolutions.Select(resolution => resolution.ToString()).ToList();
+				_resolution.index = resolutionIndex;
+				_vsync.value = _settingsData.vsync;
+				_windowed.value = _settingsData.windowed;
+			}
+			else
+			{
+				_resolution.SetEnabled(false);
+				_vsync.SetEnabled(false);
+				_windowed.SetEnabled(false);
+			}
 
 			if (_settingsData.qualityPreset == QualityPresets.Default)
 			{
@@ -74,15 +86,19 @@ namespace SpaceAttackers.UI.MainMenu.Views
 
 			_fsr.value = _settingsData.fsr;
 			_renderScaleSlider.value = _settingsData.renderScale;
-			_renderScaleLabel.text = _settingsData.renderScale.ToString(CultureInfo.InvariantCulture);
+			_renderScaleLabel.text = RenderScalePercentage(_settingsData.renderScale);
 			_apply.SetEnabled(false);
 		}
 
 		public override void RegisterEvents()
 		{
-			_resolution.RegisterValueChangedCallback(ResolutionValueChanged);
-			_vsync.RegisterValueChangedCallback(VSyncValueChanged);
-			_windowed.RegisterValueChangedCallback(WindowedValueChanged);
+			if (!UnsupportedPlatforms.IsUnsupportedPlatform)
+			{
+				_resolution.RegisterValueChangedCallback(ResolutionValueChanged);
+				_vsync.RegisterValueChangedCallback(VSyncValueChanged);
+				_windowed.RegisterValueChangedCallback(WindowedValueChanged);
+			}
+
 			_qualityPreset.RegisterValueChangedCallback(QualityPresetValueChanged);
 			_fsr.RegisterValueChangedCallback(FsrValueChanged);
 			_renderScaleSlider.RegisterValueChangedCallback(RenderScaleValueChanged);
@@ -92,13 +108,35 @@ namespace SpaceAttackers.UI.MainMenu.Views
 
 		public override void UnregisterEvents()
 		{
+			if (!UnsupportedPlatforms.IsUnsupportedPlatform)
+			{
+				_resolution.UnregisterValueChangedCallback(ResolutionValueChanged);
+				_vsync.UnregisterValueChangedCallback(VSyncValueChanged);
+				_windowed.UnregisterValueChangedCallback(WindowedValueChanged);
+			}
+
+			_qualityPreset.UnregisterValueChangedCallback(QualityPresetValueChanged);
+			_fsr.UnregisterValueChangedCallback(FsrValueChanged);
+			_renderScaleSlider.UnregisterValueChangedCallback(RenderScaleValueChanged);
 			_apply.clicked -= Apply;
 			_back.clicked -= Back;
 		}
 
 		protected override void ViewShown()
 		{
-			_resolution.Focus();
+			Focus();
+		}
+
+		private void Focus()
+		{
+			if (!UnsupportedPlatforms.IsUnsupportedPlatform)
+			{
+				_resolution.Focus();
+			}
+			else
+			{
+				_qualityPreset.Focus();
+			}
 		}
 
 		private void ResolutionValueChanged(ChangeEvent<string> evt)
@@ -134,7 +172,7 @@ namespace SpaceAttackers.UI.MainMenu.Views
 		private void RenderScaleValueChanged(ChangeEvent<float> evt)
 		{
 			_settingsData.renderScale = evt.newValue;
-			_renderScaleLabel.text = evt.newValue.ToString(CultureInfo.InvariantCulture);
+			_renderScaleLabel.text = RenderScalePercentage(evt.newValue);
 			CheckIfSettingsDataChanged();
 		}
 
@@ -149,6 +187,7 @@ namespace SpaceAttackers.UI.MainMenu.Views
 			_graphicsSettingsManager.SetData(_settingsData);
 			_settingsData = _graphicsSettingsManager.Data.ShallowClone();
 			_apply.SetEnabled(false);
+			_back.Focus();
 		}
 
 		private void Back()

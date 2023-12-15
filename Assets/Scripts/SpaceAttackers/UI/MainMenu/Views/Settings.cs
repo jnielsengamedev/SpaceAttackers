@@ -8,7 +8,7 @@ namespace SpaceAttackers.UI.MainMenu.Views
 		private Button _graphics;
 		private Button _audio;
 		private Button _back;
-		
+
 		public Settings(VisualElement element, BaseController controller) : base(element, controller)
 		{
 		}
@@ -49,6 +49,7 @@ namespace SpaceAttackers.UI.MainMenu.Views
 		{
 			Controller.SwitchView("AudioSettings");
 		}
+
 		private void Back()
 		{
 			Controller.SwitchView("MainScreen");

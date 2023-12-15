@@ -54,6 +54,7 @@ namespace SpaceAttackers.Aliens.Alien
 			{
 				yield return new WaitForEndOfFrame();
 			}
+
 			gameObject.SetActive(false);
 			_verticalRow.AlienDeactivated();
 		}

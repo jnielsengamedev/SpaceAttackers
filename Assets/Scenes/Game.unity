@@ -1192,6 +1192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCollider: {fileID: 1752327426}
   playerLives: {fileID: 1752327422}
+  camera: {fileID: 961739752}
 --- !u!114 &543074724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2659,16 +2660,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadingScreen
       objectReference: {fileID: 0}
-    - target: {fileID: 989087080039227353, guid: 8ae59fd67736e12d7ac5202b27f6c39e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1291395219551108640, guid: 8ae59fd67736e12d7ac5202b27f6c39e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5459553233463007053, guid: 8ae59fd67736e12d7ac5202b27f6c39e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3114,11 +3105,6 @@ PrefabInstance:
       propertyPath: loadingScreen
       value: 
       objectReference: {fileID: 1547390427}
-    - target: {fileID: 3531911048373183413, guid: 2aa5bda27c994cb4db10babf171e442b,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 3987250966841087567, guid: 2aa5bda27c994cb4db10babf171e442b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3173,11 +3159,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameOverScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 7524948036286130420, guid: 2aa5bda27c994cb4db10babf171e442b,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3733,6 +3714,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Graphy_Variant_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 876394969089352385, guid: c36c4212ab560b04aa64a212ec495051,
+        type: 3}
+      propertyPath: m_toggleModeCtrl
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
